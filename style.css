@@ -1,0 +1,556 @@
+/* =================================================================
+   VanzelionGame — Design Tokens & Custom Styles
+   ================================================================= */
+
+   :root {
+    --vg-primary: #1557d6;
+    --vg-primary-light: #3f7bf0;
+    --vg-secondary: #ffffff;
+    --vg-accent: #0d47a1;
+    --vg-bg: #f5f8ff;
+    --vg-ink: #0a1b3d;
+    --vg-muted: #5b6b8c;
+    --vg-success: #16a34a;
+    --vg-danger: #e11d48;
+    --vg-radius: 18px;
+    --vg-shadow: 0 10px 30px -10px rgba(13, 71, 161, 0.25);
+    --vg-shadow-lg: 0 30px 60px -20px rgba(13, 71, 161, 0.35);
+  }
+  
+  * { scroll-behavior: smooth; }
+  
+  html, body {
+    background: var(--vg-bg);
+    color: var(--vg-ink);
+    font-family: "Inter", sans-serif;
+  }
+  
+  h1, h2, h3, h4, .font-display {
+    font-family: "Poppins", sans-serif;
+  }
+  
+  ::selection { background: var(--vg-primary); color: #fff; }
+  
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: var(--vg-bg); }
+  ::-webkit-scrollbar-thumb { background: #b9caf2; border-radius: 10px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--vg-primary-light); }
+  
+  /* -----------------------------------------------------------------
+     Signature element: the "Vanzel Swoosh" — a diagonal blade-like
+     sweep echoing the Z in the VanzelionGame logo. Used as a quiet
+     recurring motif on section dividers instead of generic blobs.
+     ----------------------------------------------------------------- */
+  .vg-swoosh {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  .vg-swoosh svg { display: block; width: 100%; height: 100%; }
+  
+  /* Glassmorphism */
+  .vg-glass {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+  
+  .vg-navbar {
+    background: linear-gradient(135deg, #0a1b3d 0%, #0d2454 100%);
+    transition: box-shadow 0.35s ease, padding 0.35s ease;
+  }
+  
+  .vg-navbar.is-scrolled {
+    box-shadow: 0 6px 24px -8px rgba(10, 27, 61, 0.45);
+  }
+  
+  .vg-navbar-mobile {
+    background: #0d2454;
+  }
+  
+  /* Logo badge — used in place of a logo image file */
+  .vg-logo-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 11px;
+    background: linear-gradient(135deg, var(--vg-primary-light) 0%, var(--vg-primary) 60%, var(--vg-accent) 100%);
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    box-shadow: 0 4px 14px -3px rgba(13, 71, 161, 0.55);
+  }
+  
+  .vg-btn-outline-dark {
+    border: 1.5px solid rgba(255,255,255,0.35);
+    color: #fff;
+    background: rgba(255,255,255,0.06);
+    transition: all 0.25s ease;
+  }
+  .vg-btn-outline-dark:hover { background: var(--vg-primary); border-color: var(--vg-primary); }
+  
+  .vg-mobile-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(255,255,255,0.8);
+    padding: 4px 0;
+  }
+  .vg-mobile-link:hover { color: #fff; }
+  
+  /* Buttons */
+  .vg-btn-primary {
+    background: linear-gradient(135deg, var(--vg-primary) 0%, var(--vg-accent) 100%);
+    color: #fff;
+    box-shadow: var(--vg-shadow);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+  }
+  .vg-btn-primary:hover { transform: translateY(-2px); box-shadow: var(--vg-shadow-lg); filter: brightness(1.05); }
+  .vg-btn-primary:active { transform: translateY(0); }
+  
+  .vg-btn-outline {
+    border: 1.5px solid var(--vg-primary);
+    color: var(--vg-primary);
+    background: rgba(255,255,255,0.5);
+    transition: all 0.25s ease;
+  }
+  .vg-btn-outline:hover { background: var(--vg-primary); color: #fff; }
+  
+  /* Cards */
+  .vg-card {
+    background: #fff;
+    border-radius: var(--vg-radius);
+    box-shadow: 0 4px 16px -6px rgba(13, 71, 161, 0.12);
+    transition: transform 0.35s cubic-bezier(.2,.8,.2,1), box-shadow 0.35s ease;
+    border: 1px solid #eaf0fd;
+  }
+  .vg-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 22px 40px -16px rgba(13, 71, 161, 0.28);
+  }
+  
+  /* Badges */
+  .vg-badge {
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: .04em;
+    padding: 3px 8px;
+    border-radius: 999px;
+    line-height: 1.4;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+  .vg-badge-available { background: #e7f7ed; color: var(--vg-success); }
+  .vg-badge-sold { background: #fde8ec; color: var(--vg-danger); }
+
+  /* Small overlay "tag" pill on card thumbnails (category label, etc).
+     Its background is always a near-white pill regardless of theme, so its
+     text color is fixed here instead of using .text-vink — that class gets
+     flipped to a near-white color in dark mode, which made this badge
+     unreadable (light text on a light pill). */
+  .vg-tag-light {
+    background: rgba(255, 255, 255, 0.92);
+    color: #0a1b3d;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: .04em;
+    padding: 3px 8px;
+    border-radius: 999px;
+    line-height: 1.4;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 640px) {
+    .vg-tag-light {
+      font-size: 10px;
+      padding: 2px 7px;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .vg-badge {
+      font-size: 10px;
+      padding: 2px 7px;
+    }
+  }
+  
+  /* Video Showcase (YouTube) box on detail page.
+     Background stays a fixed light-pink pill in both themes, so its text
+     colors are pinned here instead of using .text-vink / .text-vink/xx —
+     those classes get flipped to light colors in dark mode, which made
+     this box unreadable (light text on a light pink box). */
+  .vg-yt-title { color: #0a1b3d; }
+  .vg-yt-sub   { color: rgba(10, 27, 61, 0.5); }
+  .vg-yt-icon  { color: rgba(10, 27, 61, 0.3); }
+
+  /* SOLD overlay on card thumbnails */
+  .vg-sold-overlay {
+    position: absolute; inset: 0;
+    background: rgba(10, 27, 61, 0.55);
+    display: flex; align-items: center; justify-content: center;
+    border-radius: inherit;
+  }
+  .vg-sold-overlay span {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    letter-spacing: .12em;
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 6px 22px;
+    transform: rotate(-8deg);
+    font-size: 14px;
+  }
+  
+  /* Skeleton loading */
+  .vg-skeleton {
+    background: linear-gradient(90deg, #e8edfb 25%, #f4f7fe 37%, #e8edfb 63%);
+    background-size: 400% 100%;
+    animation: vg-shimmer 1.4s ease infinite;
+    border-radius: var(--vg-radius);
+  }
+  @keyframes vg-shimmer {
+    0% { background-position: 100% 50%; }
+    100% { background-position: 0 50%; }
+  }
+  
+  /* Toast */
+  .vg-toast {
+    min-width: 260px;
+    max-width: 340px;
+    background: #0a1b3d;
+    color: #fff;
+    border-radius: 14px;
+    padding: 14px 16px;
+    box-shadow: 0 16px 40px -10px rgba(0,0,0,0.35);
+    display: flex; align-items: flex-start; gap: 10px;
+    animation: vg-toast-in 0.35s cubic-bezier(.2,.8,.2,1);
+  }
+  .vg-toast.success { border-left: 4px solid #34d399; }
+  .vg-toast.error { border-left: 4px solid #fb7185; }
+  .vg-toast.info { border-left: 4px solid var(--vg-primary-light); }
+  @keyframes vg-toast-in {
+    from { opacity: 0; transform: translateX(40px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes vg-toast-out {
+    from { opacity: 1; transform: translateX(0); }
+    to { opacity: 0; transform: translateX(40px); }
+  }
+  .vg-toast.vg-toast-leaving { animation: vg-toast-out 0.3s ease forwards; }
+  
+  /* Modal */
+  .vg-modal-backdrop {
+    background: rgba(10, 27, 61, 0.55);
+    backdrop-filter: blur(4px);
+  }
+  .vg-modal-panel {
+    animation: vg-modal-in 0.3s cubic-bezier(.2,.8,.2,1);
+  }
+  @keyframes vg-modal-in {
+    from { opacity: 0; transform: translateY(16px) scale(.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  
+  /* Filter chips */
+  .vg-chip {
+    font-size: 13px; font-weight: 600;
+    padding: 8px 12px; border-radius: 999px;
+    border: 1.5px solid #d7e3fb;
+    color: var(--vg-muted);
+    background: #fff;
+    transition: all .2s ease;
+    white-space: nowrap;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .vg-chip:hover { border-color: var(--vg-primary-light); color: var(--vg-primary); }
+  .vg-chip.active {
+    background: linear-gradient(135deg, var(--vg-primary), var(--vg-accent));
+    color: #fff; border-color: transparent;
+    box-shadow: var(--vg-shadow);
+  }
+  
+  /* Hero blob */
+  .vg-hero-glow {
+    position: absolute;
+    width: 720px; height: 720px;
+    background: radial-gradient(circle at 30% 30%, rgba(63,123,240,.35), transparent 65%);
+    filter: blur(10px);
+    border-radius: 50%;
+  }
+  
+  /* -----------------------------------------------------------------
+     Welcome banner panel (top of homepage)
+     ----------------------------------------------------------------- */
+  .vg-banner {
+    /* Fixed dark navy, not var(--vg-ink) — that variable flips to near-white
+       in dark mode for text readability elsewhere, which was washing out
+       this corner of the banner and killing contrast on the badge/text
+       sitting on top of it. The banner should always look the same. */
+    background: linear-gradient(135deg, #0a1b3d 0%, var(--vg-accent) 55%, var(--vg-primary) 100%);
+    box-shadow: var(--vg-shadow-lg);
+  }
+  
+  .vg-banner-glow {
+    position: absolute;
+    width: 520px; height: 520px;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.18), transparent 65%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  
+  .vg-banner-orb {
+    position: absolute;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle, rgba(63,123,240,.45), transparent 70%);
+    border-radius: 50%;
+    filter: blur(6px);
+    animation: vg-pulse 3.5s ease-in-out infinite;
+  }
+  
+  .vg-glass-dark {
+    background: rgba(10, 27, 61, 0.55);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 12px 30px -10px rgba(0,0,0,0.45);
+  }
+  
+  /* Loading spinner */
+  .vg-spinner {
+    width: 18px; height: 18px;
+    border: 2.5px solid rgba(255,255,255,0.4);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: vg-spin 0.7s linear infinite;
+  }
+  @keyframes vg-spin { to { transform: rotate(360deg); } }
+  
+  /* Utility: line clamp */
+  .vg-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .vg-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  
+  /* Focus visibility for accessibility */
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+    outline: 2px solid var(--vg-accent);
+    outline-offset: 2px;
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  }
+  
+  /* ================================================================
+     VanzelionGame — v4 Additions
+     ================================================================ */
+  
+  /* Portrait 4:5 card thumbnail */
+  .vg-thumb-ratio {
+    aspect-ratio: 4 / 5;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: var(--vg-radius) var(--vg-radius) 0 0;
+    background: #0a1020;
+  }
+  
+  /* ── Detail swiper ──────────────────────────────── */
+  
+  /* Wrapper yang punya tinggi nyata — pakai padding-bottom trick */
+  .vg-detail-swiper-wrap {
+    position: relative;
+    width: 100%;
+    padding-bottom: 125%; /* 4:5 portrait ratio */
+    border-radius: var(--vg-radius);
+    overflow: hidden;
+    background: #0a1020;
+  }
+  
+  /* Swiper mengisi wrapper sepenuhnya */
+  .vg-detail-swiper {
+    position: absolute !important;
+    top: 0; left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: var(--vg-radius);
+    overflow: hidden;
+  }
+  
+  .vg-detail-swiper .swiper-wrapper {
+    height: 100% !important;
+  }
+  
+  .vg-detail-swiper .swiper-slide {
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden;
+    background: #0a1020;
+  }
+  
+  /* Gambar mengisi slide */
+  .vg-swiper-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Nav */
+  .vg-detail-swiper .swiper-button-prev,
+  .vg-detail-swiper .swiper-button-next {
+    color: #fff;
+    background: rgba(10,27,61,0.55);
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    margin-top: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .vg-detail-swiper .swiper-button-prev::after,
+  .vg-detail-swiper .swiper-button-next::after { font-size: 12px; font-weight: 800; }
+  .vg-detail-swiper .swiper-pagination { bottom: 8px; }
+  .vg-detail-swiper .swiper-pagination-bullet { background: rgba(255,255,255,0.55); opacity: 1; }
+  .vg-detail-swiper .swiper-pagination-bullet-active { background: #fff; }
+  
+  /* Thumbnail strip */
+  .vg-img-thumb { transition: border-color 0.2s, opacity 0.2s; opacity: 0.55; flex-shrink: 0; }
+  .vg-img-thumb:hover { opacity: 0.85; }
+  .vg-img-thumb.active { border-color: var(--vg-primary) !important; opacity: 1; }
+  
+  /* Empty placeholder */
+  .vg-detail-img-empty {
+    width: 100%;
+    padding-bottom: 125%;
+    position: relative;
+    border-radius: var(--vg-radius);
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--vg-primary), var(--vg-accent));
+  }
+  .vg-detail-img-empty i {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  /* Search placeholder centered */
+  #vg-search::placeholder { text-align: center; }
+  
+  /* Detail page sticky navbar */
+  #vg-detail-page .vg-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  
+  /* Spec row hover */
+  #vg-detail-content li.flex { transition: background 0.15s; }
+  #vg-detail-content li.flex:hover { background: #eaf0fd; }
+/* ================================================================
+   VanzelionGame — Dark Mode
+   Diaktifkan lewat class "dark" di <html> (lihat theme.js).
+   Karena Tailwind di-load via CDN (tanpa build step), warna gelap
+   di-override lewat selector atribut supaya nggak perlu edit ulang
+   setiap file HTML/JS yang generate markup dinamis.
+   ================================================================ */
+
+html.dark {
+  --vg-bg: #0a1220;
+  --vg-ink: #eef2fc;
+  --vg-muted: #8b9bc0;
+  --vg-surface: #101a30;
+  --vg-surface-2: #151f38;
+  --vg-border: #223047;
+}
+
+html.dark body { background: var(--vg-bg); color: var(--vg-ink); }
+
+html.dark ::-webkit-scrollbar-track { background: var(--vg-bg); }
+html.dark ::-webkit-scrollbar-thumb { background: #2a3a58; }
+
+/* Section / page surfaces yang pakai utility Tailwind langsung */
+html.dark [class~="bg-white"]   { background-color: var(--vg-surface) !important; }
+html.dark [class~="bg-vbg"]     { background-color: var(--vg-bg) !important; }
+html.dark [class~="hover:bg-vbg"]:hover { background-color: var(--vg-surface-2) !important; }
+
+/* The hero banner (.vg-banner) is a fixed dark gradient panel that never
+   changes with the light/dark toggle. Its white CTA button ("Beli Akun
+   Sekarang") was getting swept up by the global bg-white override above,
+   turning its background dark while its navy text stayed navy — nearly
+   invisible. Restore it to a real white pill regardless of site theme. */
+html.dark .vg-banner [class~="bg-white"] { background-color: #ffffff !important; }
+html.dark .vg-banner [class~="hover:bg-vbg"]:hover { background-color: #eef2fc !important; }
+
+/* Teks solid vs teks redup (opacity variants) */
+html.dark [class~="text-vink"]  { color: var(--vg-ink) !important; }
+html.dark [class*="text-vink/"] { color: var(--vg-muted) !important; }
+
+/* Border tipis yang biasa dipakai di card/section putih */
+html.dark [class~="border-vprimary"],
+html.dark [class*="border-vprimary/"] { border-color: rgba(63,123,240,.35) !important; }
+
+/* Komponen custom */
+html.dark .vg-card {
+  background: var(--vg-surface);
+  border-color: var(--vg-border);
+}
+html.dark .vg-chip {
+  background: var(--vg-surface);
+  border-color: var(--vg-border);
+  color: var(--vg-muted);
+}
+html.dark .vg-chip:hover { border-color: var(--vg-primary-light); color: var(--vg-primary-light); }
+/* Chip aktif harus tetap menonjol di dark mode. Tanpa aturan ini,
+   selector "html.dark .vg-chip" di atas (yang punya specificity lebih
+   tinggi karena ada selector elemen "html") menimpa gaya ".vg-chip.active",
+   sehingga chip aktif & tidak aktif terlihat sama persis di dark mode. */
+html.dark .vg-chip.active {
+  background: linear-gradient(135deg, var(--vg-primary), var(--vg-accent));
+  color: #fff;
+  border-color: transparent;
+}
+html.dark .vg-btn-outline { background: rgba(255,255,255,0.04); }
+html.dark .vg-glass {
+  background: rgba(16,26,48,.6);
+  border-color: rgba(255,255,255,.08);
+}
+html.dark .vg-skeleton {
+  background: linear-gradient(90deg, #16213a 25%, #1c2947 37%, #16213a 63%);
+  background-size: 400% 100%;
+}
+html.dark .vg-toast { background: #101a30; }
+html.dark .vg-modal-panel,
+html.dark #vg-detail-page,
+html.dark #vg-detail-content li.flex:hover { background: var(--vg-surface); }
+html.dark #vg-detail-content li.flex:hover { background: var(--vg-surface-2); }
+
+/* Input & search field */
+html.dark input, html.dark textarea, html.dark select {
+  background: var(--vg-surface);
+  color: var(--vg-ink);
+  border-color: var(--vg-border);
+}
+html.dark input::placeholder, html.dark textarea::placeholder { color: var(--vg-muted); }
+
+/* Hero glow sedikit diredupkan biar nggak terlalu terang di atas latar gelap */
+html.dark .vg-hero-glow { opacity: .55; }
+
+/* Theme toggle button icon transition */
+[data-theme-toggle] i { transition: transform .3s ease; }
+[data-theme-toggle]:active i { transform: rotate(20deg) scale(0.9); }

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Anti-flash: terapkan tema sebelum halaman dirender -->
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('vg-theme');
+      if (!t) t = 'dark';
+      if (t === 'dark') document.documentElement.classList.add('dark');
+    } catch (e) {}
+  })();
+</script>
+<title>VanzelionGame — Link Bio</title>
+<meta name="description" content="Semua link penting VanzelionGame dalam satu halaman: akun eFootball, topup koin, dan kontak admin." />
+<link rel="icon" type="image/png" href="logo.jpeg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: { extend: {
+      colors: { vprimary:'#1557D6', vaccent:'#0D47A1', vbg:'#F5F8FF', vink:'#0A1B3D' },
+      fontFamily: { display:['Poppins','sans-serif'], sans:['Inter','sans-serif'] },
+      borderRadius: { 'vg':'18px' }
+    }}
+  }
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* ── Bio-page-only additions (semua token warna ikut style.css) ── */
+
+  .vg-bio-glow {
+    position: absolute;
+    width: 520px; height: 520px;
+    left: 50%; top: -180px;
+    transform: translateX(-50%);
+    background: radial-gradient(circle, rgba(21,87,214,.30), transparent 68%);
+    filter: blur(20px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .vg-bio-avatar {
+    width: 88px; height: 88px;
+    border-radius: 26px;
+    box-shadow: 0 14px 34px -10px rgba(13,71,161,.5);
+    display: block;
+  }
+
+  .vg-live-pill {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 12px; font-weight: 600;
+    padding: 7px 14px; border-radius: 999px;
+    background: #e7f7ed; color: var(--vg-success);
+    border: 1px solid rgba(22,163,74,.18);
+  }
+  html.dark .vg-live-pill { background: rgba(22,163,74,.14); border-color: rgba(22,163,74,.25); }
+
+  .vg-live-dot {
+    width: 7px; height: 7px; border-radius: 999px;
+    background: var(--vg-success);
+    box-shadow: 0 0 0 0 rgba(22,163,74,.55);
+    animation: vg-pulse 1.8s infinite;
+  }
+  @keyframes vg-pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(22,163,74,.55); }
+    70%  { box-shadow: 0 0 0 7px rgba(22,163,74,0); }
+    100% { box-shadow: 0 0 0 0 rgba(22,163,74,0); }
+  }
+
+  .vg-link-item {
+    background: #fff;
+    border: 1px solid #eaf0fd;
+    border-radius: var(--vg-radius);
+    box-shadow: 0 4px 16px -8px rgba(13,71,161,.14);
+    transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease, border-color .25s ease;
+  }
+  .vg-link-item:hover { transform: translateY(-3px) scale(1.005); box-shadow: 0 16px 30px -12px rgba(13,71,161,.28); }
+  .vg-link-item:active { transform: translateY(0) scale(0.995); }
+  html.dark .vg-link-item {
+    background: var(--vg-surface);
+    border-color: var(--vg-border);
+  }
+
+  .vg-link-icon {
+    width: 44px; height: 44px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, var(--vg-primary-light), var(--vg-primary));
+    color: #fff;
+    box-shadow: 0 6px 14px -5px rgba(21,87,214,.5);
+  }
+  .vg-link-icon.wa { background: linear-gradient(135deg, #34d058, #16a34a); box-shadow: 0 6px 14px -5px rgba(22,163,74,.5); }
+  .vg-link-icon.ig { background: linear-gradient(135deg, #f9a856, #d6249f, #6739a8); box-shadow: 0 6px 14px -5px rgba(214,36,159,.4); }
+  .vg-link-icon.tt { background: linear-gradient(135deg, #25f4ee, #0a1b3d); box-shadow: 0 6px 14px -5px rgba(10,27,61,.5); }
+
+  .vg-theme-toggle-float {
+    width: 42px; height: 42px; border-radius: 999px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(10,27,61,.06);
+    border: 1px solid rgba(10,27,61,.10);
+    color: var(--vg-ink);
+    transition: background .2s ease;
+  }
+  .vg-theme-toggle-float:hover { background: rgba(10,27,61,.12); }
+  html.dark .vg-theme-toggle-float {
+    background: rgba(255,255,255,.06);
+    border-color: rgba(255,255,255,.14);
+    color: #fff;
+  }
+  html.dark .vg-theme-toggle-float:hover { background: rgba(255,255,255,.12); }
+</style>
+</head>
+<body class="bg-vbg text-vink font-sans antialiased min-h-screen">
+
+<div class="relative min-h-screen overflow-hidden">
+  <div class="vg-bio-glow"></div>
+
+  <!-- Theme toggle -->
+  <div class="relative z-10 max-w-md mx-auto px-6 pt-6 flex justify-end">
+    <button data-theme-toggle aria-label="Ganti tema" class="vg-theme-toggle-float">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </div>
+
+  <!-- Hero -->
+  <div class="relative z-10 max-w-md mx-auto px-6 pt-4 pb-8 text-center">
+    <img src="logo.jpeg" alt="VanzelionGame" class="vg-bio-avatar mx-auto mb-4 object-cover" />
+    <h1 class="font-display font-extrabold text-2xl text-vink">Vanzelion<span class="text-vprimary">Game</span></h1>
+    <p class="text-vink/55 text-sm mt-1.5 max-w-xs mx-auto leading-relaxed">
+      Marketplace akun &amp; topup koin eFootball terpercaya
+    </p>
+
+    <div class="mt-4">
+      <span id="vg-live-pill" class="vg-live-pill">
+        <span class="vg-live-dot"></span>
+        <span id="vg-live-text">Memuat stok akun…</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- Links -->
+  <div class="relative z-10 max-w-md mx-auto px-6 pb-4 flex flex-col gap-3.5">
+
+    <a href="https://vanzeliongame.my.id/akun.html" class="vg-link-item flex items-center gap-4 px-4 py-3.5">
+      <span class="vg-link-icon"><i class="fa-solid fa-gamepad text-lg"></i></span>
+      <span class="flex-1 text-left">
+        <span class="block font-display font-semibold text-sm text-vink">Lihat Semua Akun eFootball</span>
+        <span class="block text-xs text-vink/50 mt-0.5">Stok terbaru &amp; harga lengkap</span>
+      </span>
+      <i class="fa-solid fa-chevron-right text-vink/30 text-sm"></i>
+    </a>
+
+    <a href="https://vanzeliongame.my.id/topup.html" class="vg-link-item flex items-center gap-4 px-4 py-3.5">
+      <span class="vg-link-icon"><i class="fa-solid fa-coins text-lg"></i></span>
+      <span class="flex-1 text-left">
+        <span class="block font-display font-semibold text-sm text-vink">Topup Koin eFootball</span>
+        <span class="block text-xs text-vink/50 mt-0.5">Proses cepat, langsung ke akun</span>
+      </span>
+      <i class="fa-solid fa-chevron-right text-vink/30 text-sm"></i>
+    </a>
+
+    <a href="https://vanzeliongame.my.id/" class="vg-link-item flex items-center gap-4 px-4 py-3.5">
+      <span class="vg-link-icon"><i class="fa-solid fa-globe text-lg"></i></span>
+      <span class="flex-1 text-left">
+        <span class="block font-display font-semibold text-sm text-vink">Kunjungi Website Utama</span>
+        <span class="block text-xs text-vink/50 mt-0.5">vanzeliongame.my.id</span>
+      </span>
+      <i class="fa-solid fa-chevron-right text-vink/30 text-sm"></i>
+    </a>
+
+    <a href="https://wa.me/62895630326301?text=Halo%20VanzelionGame%2C%20saya%20mau%20tanya-tanya" target="_blank" rel="noopener"
+      class="vg-link-item flex items-center gap-4 px-4 py-3.5">
+      <span class="vg-link-icon wa"><i class="fa-brands fa-whatsapp text-lg"></i></span>
+      <span class="flex-1 text-left">
+        <span class="block font-display font-semibold text-sm text-vink">Chat Admin</span>
+        <span class="block text-xs text-vink/50 mt-0.5">Konsultasi &amp; transaksi via WhatsApp</span>
+      </span>
+      <i class="fa-solid fa-chevron-right text-vink/30 text-sm"></i>
+    </a>
+
+    <a href="https://www.instagram.com/vanzelion.efo/" target="_blank" rel="noopener"
+      class="vg-link-item flex items-center gap-4 px-4 py-3.5">
+      <span class="vg-link-icon ig"><i class="fa-brands fa-instagram text-lg"></i></span>
+      <span class="flex-1 text-left">
+        <span class="block font-display font-semibold text-sm text-vink">Instagram</span>
+        <span class="block text-xs text-vink/50 mt-0.5">@vanzelion.efo</span>
+      </span>
+      <i class="fa-solid fa-chevron-right text-vink/30 text-sm"></i>
+    </a>
+
+    <a href="https://www.tiktok.com/@vanzelion.bola" target="_blank" rel="noopener"
+      class="vg-link-item flex items-center gap-4 px-4 py-3.5">
+      <span class="vg-link-icon tt"><i class="fa-brands fa-tiktok text-lg"></i></span>
+      <span class="flex-1 text-left">
+        <span class="block font-display font-semibold text-sm text-vink">TikTok</span>
+        <span class="block text-xs text-vink/50 mt-0.5">@vanzelion.bola</span>
+      </span>
+      <i class="fa-solid fa-chevron-right text-vink/30 text-sm"></i>
+    </a>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="relative z-10 max-w-md mx-auto px-6 py-8 text-center">
+    <p class="text-xs text-vink/40">&copy; <span id="vg-year"></span> VanzelionGame. Seluruh hak cipta dilindungi.</p>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="theme.js"></script>
+<script src="data.js"></script>
+<script>
+  document.getElementById("vg-year").textContent = new Date().getFullYear();
+
+  (async function () {
+    const el = document.getElementById("vg-live-text");
+    try {
+      const products = await VanzelionDB.getProducts();
+      const available = products.filter(p => p.status !== "SOLD").length;
+      el.textContent = available > 0
+        ? available + " akun tersedia sekarang"
+        : "Stok sedang kosong, cek berkala ya";
+    } catch (e) {
+      el.textContent = "Cek stok akun terbaru";
+    }
+  })();
+</script>
+</body>
+</html>
